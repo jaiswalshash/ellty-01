@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Checkbox = ({ checked, onChange }) => {
+const CheckBox = ({ checked, onChange }) => {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = (e) => {
@@ -58,4 +58,4 @@ const Checkbox = ({ checked, onChange }) => {
   );
 };
 
-export default Checkbox;
+export default CheckBox;
