@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+import { toast } from "react-toastify";
 import CheckBox from "./CheckBox";
 
 const PageSelector = ({ totalPages, onSelectionChange }) => {
@@ -24,6 +26,14 @@ const PageSelector = ({ totalPages, onSelectionChange }) => {
     });
   };
 
+  const handleDone = () => {
+    const message =
+      selectedPages.length > 0
+        ? `You selected ${selectedPages.length} page(s): ${selectedPages.join(", ")}`
+        : "No pages selected!";
+    toast.info(message);
+  };
+
   return (
     <div className="font-montserrat bg-white rounded-md py-5 px-5 w-[370px] border border-[#EEEEEE] shadow-md">
       <div className="border-b border-gray-200 pb-4">
@@ -45,11 +55,15 @@ const PageSelector = ({ totalPages, onSelectionChange }) => {
         ))}
       </div>
 
-      <button className="w-full mt-4 bg-[#FFCE22] hover:bg-[#FFD84D] text-[#1F2128] text-[14px] font-normal py-2 px-4 rounded-md transition-colors">
+      <button
+        className="w-full mt-4 bg-[#FFCE22] hover:bg-[#FFD84D] text-[#1F2128] text-[14px] font-normal py-2 px-4 rounded-md transition-colors"
+        onClick={handleDone}
+      >
         Done
       </button>
     </div>
   );
 };
+
 
 export default PageSelector;
